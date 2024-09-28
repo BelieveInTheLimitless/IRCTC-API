@@ -66,3 +66,154 @@ pip3 install -r requirements.txt
 ```bash
 python3 app.py
 ```
+
+## API Endpoints
+
+### Admin API Endpoints
+
+- **Add Train**  
+  `POST /admin/add_train`
+  - **Request Headers**  
+    `ADMIN-API-KEY: <API_KEY>`
+  - **Request Body**  
+    ```json
+    {
+      "name": "Express Train",
+      "source": "Pune",
+      "destination": "Thane",
+      "total_seats": 100
+    }
+    ```
+  - **Response**  
+    ```json
+    {
+      "message": "Train added successfully"
+      "train_id": 1
+    }
+    ```
+
+- **Update Train**  
+  `PUT /admin/update_train/<train_id>`
+  - **Request Headers**  
+    `ADMIN-API-KEY: <API_KEY>`
+  - **Request Body**  
+    ```json
+    {
+      "name": "New Express Train",
+      "source": "Mumbai",
+      "destination": "Delhi",
+      "total_seats": 200
+    }
+    ```
+  - **Response**  
+    ```json
+    {
+      "message": "Train updated successfully"
+    }
+    ```
+    
+- **Delete Train**  
+  `DELETE /admin/delete_train/<train_id>`
+  - **Request Headers**  
+    `ADMIN-API-KEY: <API_KEY>`
+  - **Response**  
+    ```json
+    {
+      "message": "Train deleted successfully"
+    }
+    ```
+  - **Error Response** (if train not found)  
+    ```json
+    {
+      "message": "Train not found"
+    }
+    ```
+
+### User API Endpoints
+
+- **Register User**  
+  `POST /register`
+  - **Request Body**  
+    ```json
+    {
+      "username": "john_doe",
+      "password": "securepassword"
+    }
+    ```
+  - **Response**  
+    ```json
+    {
+      "message": "User registered successfully"
+    }
+    ```
+
+- **Login User**  
+  `POST /login`
+  - **Request Body**  
+    ```json
+    {
+      "username": "john_doe",
+      "password": "securepassword"
+    }
+    ```
+  - **Response**  
+    ```json
+    {
+      "access_token": "<JWT_TOKEN>"
+    }
+    ```
+
+- **Check Seat Availability**  
+  `GET /trains/availability`
+  - **Request Headers**  
+    `Authorization: Bearer <JWT_TOKEN>`
+  - **Request Params**  
+    - `source`: "Pune"  
+    - `destination`: "Thane"
+  - **Response**  
+    ```json
+    [
+      {
+        "train_id": 1,
+        "train_name": "Express Train",
+        "available_seats": 50
+      }
+    ]
+    ```
+
+- **Book Seat**  
+  `POST /user/bookings`
+  - **Request Headers**  
+    `Authorization: Bearer <JWT_TOKEN>`
+  - **Request Body**  
+    ```json
+    {
+      "train_id": 1
+    }
+    ```
+  - **Response**  
+    ```json
+    {
+      "message": "Seat booked successfully",
+      "booking_id": 101
+    }
+    ```
+
+- **Get User Bookings**  
+  `GET /user/bookings/info`
+  - **Request Headers**  
+    `Authorization: Bearer <JWT_TOKEN>`
+  - **Response**  
+    ```json
+    [
+      {
+        "booking_id": 101,
+        "train_name": "Express Train",
+        "source": "Pune",
+        "destination": "Thane",
+        "seat_number": 50
+      }
+    ]
+    ```
+
+
