@@ -11,6 +11,7 @@ A Flask-based API for managing train bookings, user registrations, and admin pri
 ## Features
 - Admin privileges - Add, Update, Delete train/s
 - User privileges -  Register, Login, Check Seat Availability, Book Seat/s, Check Booking info
+- Optimized for handling race conditions by holding a lock for ongoing transaction
 - Admin API endpoints are secured by API Key which are known to Admin and Host
 - JWT-based authentication token system for user login with 1 hour expiration window
 
