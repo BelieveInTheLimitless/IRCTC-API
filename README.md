@@ -9,11 +9,10 @@ A Flask-based API for managing train bookings, user registrations, and admin pri
 - [API Endpoints](#api-endpoints)
 
 ## Features
-- User registration and login
-- JWT-based authentication
-- Train management (add, update, view trains)
-- Seat availability check
-- Booking management
+- Admin privileges - Add, Update, Delete train/s
+- User privileges -  Register, Login, Check Seat Availability, Book Seat/s, Check Booking info
+- Admin API endpoints are secured by API Key which are known to Admin and Host
+- JWT-based authentication token system for user login with 1 hour expiration window
 
 ## Technologies Used
 - Python3 (Prerequisite)
