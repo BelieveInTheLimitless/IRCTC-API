@@ -1,6 +1,6 @@
 # IRCTC API
 
-A Flask-based API that allows users to register, login & book train tickets along with API key-based authentication for admins.
+A Flask based API that allows users to register, login & book train tickets along with API key-based authentication for admins.
 
 ## Table of Contents
 - [Features](#features)
